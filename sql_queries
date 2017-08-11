@@ -1,3 +1,7 @@
+-- create database
+
+CREATE DATABASE ip_database;
+
 -- create table with ip addresses
 -- columns : ip address, first visit time, last visit time, average response time, test time
 
@@ -5,7 +9,7 @@ CREATE TABLE ip_storage (ip_addr VARCHAR(15) NOT NULL, first_visit INTEGER, last
 
 -- insert into table, update last visit on duplicate
 
-INSERT INTO ip_storage (ip_addr, first_visit, last_visit) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE last_visit=%s
+INSERT INTO ip_storage (ip_addr, first_visit, last_visit) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE last_visit=%s;
 
 -- report, 3 records with lowest and highest response rates
 
@@ -20,3 +24,6 @@ DELETE FROM ip_storage WHERE ip_addr=%s;
 
 SELECT * FROM ip_storage ORDER BY test_time ASC LIMIT 10;
 
+-- update average time and test time
+
+UPDATE ip_storage SET avg_rt=%s, test_time=%s WHERE ip_addr=%s;
