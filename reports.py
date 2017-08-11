@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import MySQLdb
 import MySQLdb.cursors as cursors
 
@@ -12,7 +14,7 @@ connection = MySQLdb.connect(host='localhost',
 
 cursor = connection.cursor()
 
-def ip_shortests():
+def ip_shortest():
     cursor.execute('SELECT ip_addr, avg_rt FROM ip_storage ORDER BY avg_rt ASC LIMIT 3;')
     result = cursor.fetchall()
 
@@ -29,5 +31,5 @@ def ip_longest():
     for row in result:
         print("IP: ", row[0], " response time: ", row[1])
 
-ip_shortests()
+ip_shortest()
 ip_longest()
