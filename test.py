@@ -1,3 +1,5 @@
+#/bin/python3
+
 import MySQLdb
 import MySQLdb.cursors as cursors
 import subprocess
@@ -28,12 +30,12 @@ for row in result:
     epoch_time = int(time.time())
     if is_number(output):
         output = float(output.decode("UTF-8"))
-        print(row[0])
-        print (epoch_time)
-        print(output)
         sql = "UPDATE ip_storage SET avg_rt=%s, test_time=%s WHERE ip_addr=%s"
+        print (sql % (output, epoch_time, row[0]))
         cursor.execute(sql, (output, epoch_time, row[0]))
     else:
-        print ('trololo')
+        sql2 = "DELETE FROM ip_storage WHERE ip_addr=\'%s\'"
+        print (sql2 % row[0])
+        cursor.execute(sql2 % (row[0]))
 
 connection.commit()

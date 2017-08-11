@@ -14,20 +14,9 @@ SELECT ip_addr, avg_rt FROM ip_storage ORDER BY avg_rt DESC LIMIT 3;
 
 -- remove IP record that doesn't respond
 
-<<<<<<< HEAD
 DELETE FROM ip_storage WHERE ip_addr=%s;
 
 -- show 10 records that hasn't been tested or has been tested earliest
 
-SELECT * FROM ip_storage ORDER BY test_time ASC LIMIT 10
-
--- update response time and test time of tested IP
-
-UPDATE ip_storage SET avg_rt=%s, test_time=%s WHERE ip_addr=%s
-=======
-DELETE FROM ip_storage WHERE ip_addr = /* ip address to delete */;
-
--- show 10 records that hasn't been tested or has been tested earliest
-
 SELECT * FROM ip_storage ORDER BY test_time ASC LIMIT 10;
->>>>>>> 49e7b992316d9be70bda921562c2623471c923d7
+

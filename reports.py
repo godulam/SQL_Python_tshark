@@ -1,7 +1,5 @@
 import MySQLdb
 import MySQLdb.cursors as cursors
-import subprocess
-import time
 
 # Connect to the database
 connection = MySQLdb.connect(host='localhost',
